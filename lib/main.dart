@@ -54,9 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(backgroundColor: new Color(0xFF26C6DA)),
+      appBar: new AppBar(
+        backgroundColor: new Color(0xFF26C6DA),
+        title: Text('Projeto Intro-Widget'),
+      ),
       body: new Container(
-        margin: new EdgeInsets.only(left: 16.0, right: 16.0),
+        margin: new EdgeInsets.only(left: 10.0, right: 10.0),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -66,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.contain, // otherwise the logo will be tiny
                     child: const FlutterLogo(),
                   ),
-                )
+                ),
             ]),
       ),
       floatingActionButton: Row(
