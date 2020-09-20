@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(kudos());
+  runApp(Pedidos());
 }
 
-class kudos extends StatelessWidget {
+class Pedidos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -18,23 +18,36 @@ class kudos extends StatelessWidget {
   }
 }
 
-class listaKudos extends StatelessWidget {
+class ListaKudos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Card(
-          child: ListTile(
-        leading: Icon(Icons.thumb_up),
-        title: Text('Bom trabalho'),
-        subtitle: Text('Você recebeu um agradecimento'),
-      )),
-      Card(
-          child: ListTile(
-        leading: Icon(Icons.thumb_down),
-        title: Text('Rendimento abaixo do esperado'),
-        subtitle: Text('Você recebeu uma reclamação'),
-      )),
+      Item('4565', 'Batata-frita', true),
+      Item('1245', 'Milkshake G', false),
+      Item('45', 'Coca cola zero', false),
+      Item('45', 'H20 fresh', false),
+      Item('78', 'X-Burger', true),
+      Item('43', 'Big Chicken', true),
     ]);
+  }
+}
+
+class Item extends StatelessWidget {
+  final String titulo;
+  final String mensagem;
+  final bool isFood;
+
+  Item(this.titulo, this.mensagem, this.isFood);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        leading: Icon(isFood ? Icons.fastfood : Icons.local_drink),
+        title: Text("Pedido Nº " + this.titulo),
+        subtitle: Text("Descrição: " + this.mensagem),
+      ),
+    );
   }
 }
 
@@ -54,10 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: listaKudos(),
+      body: ListaKudos(),
       appBar: new AppBar(
-        backgroundColor: Colors.purple,
-        title: Text('Kudos'),
+        backgroundColor: Colors.orange,
+        title: Text('Lista de Pedidos'),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
