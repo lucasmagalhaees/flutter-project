@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kudoapp/br/com/fujideia/flutter/material/AulaMaterialApp.dart';
-import 'package:kudoapp/br/com/fujideia/flutter/material/AulaMaterialApp02.dart';
-import 'package:kudoapp/br/com/fujideia/flutter/material/AulaMaterialApp03.dart';
 
-import 'br/com/fujideia/flutter/rotas/KudoAmizade.dart';
-import 'br/com/fujideia/flutter/rotas/KudoColaborador.dart';
-import 'br/com/fujideia/flutter/rotas/KudoMain.dart';
-import 'br/com/fujideia/flutter/rotas/Kudos.dart';
+import 'br/com/projeto/flutter/rotas/Bebida.dart';
+import 'br/com/projeto/flutter/rotas/Comida.dart';
+import 'br/com/projeto/flutter/rotas/KudoMain.dart';
+import 'br/com/projeto/flutter/rotas/ListaPedidos.dart';
 
 /*
 void main() =>   runApp(
