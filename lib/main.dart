@@ -1,51 +1,87 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Pedidos());
+  runApp(Formulario());
 }
 
-class Pedidos extends StatelessWidget {
+class Usuario {
+  final String username;
+  final String nome;
+  final String sobrenome;
+  final String dataNascimento;
+  final String email;
+  final String senha;
+
+  Usuario(this.username, this.nome, this.sobrenome, this.dataNascimento,
+      this.email, this.senha);
+
+  @override
+  String toString() {
+    return 'Usuário{username: $username, nome: $nome, sobrenome: $sobrenome}';
+  }
+}
+
+class Formulario extends StatelessWidget {
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _nome = TextEditingController();
+  final TextEditingController _sobrenome = TextEditingController();
+  final TextEditingController _dataNascimento = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _senha = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Cadastrando produto'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                controller: _username,
+                decoration: InputDecoration(labelText: 'Username'),
+              ),
+              TextField(
+                controller: _nome,
+                decoration: InputDecoration(labelText: 'Nome'),
+              ),
+              TextField(
+                controller: _sobrenome,
+                decoration: InputDecoration(labelText: 'Sobrenome'),
+              ),
+              TextField(
+                controller: _dataNascimento,
+                decoration: InputDecoration(labelText: 'Data de Nascimento'),
+              ),
+              TextField(
+                controller: _email,
+                decoration: InputDecoration(labelText: 'Email'),
+              ),
+              TextField(
+                controller: _senha,
+                decoration: InputDecoration(labelText: 'Senha'),
+              ),
+              RaisedButton(
+                child: Text('Cadastrar'),
+                onPressed: () {
+                  final String username = _username.text;
+                  final String nome = _nome.text;
+                  final String sobrenome = _sobrenome.text;
+                  final String dataNascimento = _dataNascimento.text;
+                  final String email = _email.text;
+                  final String senha = _senha.text;
 
-class ListaKudos extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      Item('4565', 'Batata-frita', true),
-      Item('1245', 'Milkshake G', false),
-      Item('45', 'Coca cola zero', false),
-      Item('45', 'H20 fresh', false),
-      Item('78', 'X-Burger', true),
-      Item('43', 'Big Chicken', true),
-    ]);
-  }
-}
-
-class Item extends StatelessWidget {
-  final String titulo;
-  final String mensagem;
-  final bool isFood;
-
-  Item(this.titulo, this.mensagem, this.isFood);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Icon(isFood ? Icons.fastfood : Icons.local_drink),
-        title: Text("Pedido Nº " + this.titulo),
-        subtitle: Text("Descrição: " + this.mensagem),
+                  final Usuario user = Usuario(
+                      username, nome, sobrenome, dataNascimento, email, senha);
+                  print(user);
+                },
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -66,48 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListaKudos(),
-      appBar: new AppBar(
-        backgroundColor: Colors.orange,
-        title: Text('Lista de Pedidos'),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            onPressed: () {
-              _show();
-            },
-            tooltip: 'Incrementar',
-            child: Icon(Icons.add),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _show() {
-    setState(() {
-      visibility = true;
-    });
-  }
-
-  void _hide() {
-    setState(() {
-      visibility = false;
-    });
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
+    return Formulario();
   }
 }
