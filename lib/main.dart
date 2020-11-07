@@ -4,30 +4,47 @@ void main() {
   runApp(Formulario());
 }
 
-class Usuario {
-  final String username;
+class Projeto {
+  final String codigo;
   final String nome;
-  final String sobrenome;
-  final String dataNascimento;
-  final String email;
-  final String senha;
+  final String descricao;
+  final String gerente;
+  final String dataSP1;
+  final String dataSP2;
+  final String dataInicio;
+  final String dataFim;
+  final String dataReview;
+  final String dataRetrospectiva;
 
-  Usuario(this.username, this.nome, this.sobrenome, this.dataNascimento,
-      this.email, this.senha);
+  Projeto(
+      this.codigo,
+      this.nome,
+      this.descricao,
+      this.gerente,
+      this.dataSP1,
+      this.dataSP2,
+      this.dataInicio,
+      this.dataFim,
+      this.dataReview,
+      this.dataRetrospectiva);
 
   @override
   String toString() {
-    return 'Usuário{username: $username, nome: $nome, sobrenome: $sobrenome}';
+    return 'Projeto{código: $codigo, nome: $nome, descricao: $descricao}';
   }
 }
 
 class Formulario extends StatelessWidget {
-  final TextEditingController _username = TextEditingController();
+  final TextEditingController _codigo = TextEditingController();
   final TextEditingController _nome = TextEditingController();
-  final TextEditingController _sobrenome = TextEditingController();
-  final TextEditingController _dataNascimento = TextEditingController();
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _senha = TextEditingController();
+  final TextEditingController _descricao = TextEditingController();
+  final TextEditingController _gerente = TextEditingController();
+  final TextEditingController _dataSP1 = TextEditingController();
+  final TextEditingController _dataSP2 = TextEditingController();
+  final TextEditingController _dataInicio = TextEditingController();
+  final TextEditingController _dataFim = TextEditingController();
+  final TextEditingController _dataReview = TextEditingController();
+  final TextEditingController _dataRetrospectiva = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,51 +53,77 @@ class Formulario extends StatelessWidget {
         appBar: AppBar(
           title: Text('Formulário de Produtos'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: _username,
-                decoration: InputDecoration(labelText: 'Username'),
-              ),
-              TextField(
-                controller: _nome,
-                decoration: InputDecoration(labelText: 'Nome'),
-              ),
-              TextField(
-                controller: _sobrenome,
-                decoration: InputDecoration(labelText: 'Sobrenome'),
-              ),
-              TextField(
-                controller: _dataNascimento,
-                decoration: InputDecoration(labelText: 'Data de Nascimento'),
-              ),
-              TextField(
-                controller: _email,
-                decoration: InputDecoration(labelText: 'Email'),
-              ),
-              TextField(
-                controller: _senha,
-                decoration: InputDecoration(labelText: 'Senha'),
-              ),
-              RaisedButton(
-                child: Text('Cadastrar'),
-                onPressed: () {
-                  final String username = _username.text;
-                  final String nome = _nome.text;
-                  final String sobrenome = _sobrenome.text;
-                  final String dataNascimento = _dataNascimento.text;
-                  final String email = _email.text;
-                  final String senha = _senha.text;
+        body: Column(
+          children: <Widget>[
+            TextField(
+              controller: _codigo,
+              decoration: InputDecoration(labelText: 'Código'),
+            ),
+            TextField(
+              controller: _nome,
+              decoration: InputDecoration(labelText: 'Nome'),
+            ),
+            TextField(
+              controller: _descricao,
+              decoration: InputDecoration(labelText: 'Descrição'),
+            ),
+            TextField(
+              controller: _gerente,
+              decoration: InputDecoration(labelText: 'Data de Nascimento'),
+            ),
+            TextField(
+              controller: _dataSP1,
+              decoration: InputDecoration(labelText: 'Data SP1'),
+            ),
+            TextField(
+              controller: _dataSP2,
+              decoration: InputDecoration(labelText: 'Data SP2'),
+            ),
+            TextField(
+              controller: _dataInicio,
+              decoration: InputDecoration(labelText: 'Data Início'),
+            ),
+            TextField(
+              controller: _dataFim,
+              decoration: InputDecoration(labelText: 'Data Fim'),
+            ),
+            TextField(
+              controller: _dataReview,
+              decoration: InputDecoration(labelText: 'Data Review'),
+            ),
+            TextField(
+              controller: _dataRetrospectiva,
+              decoration: InputDecoration(labelText: 'Data Retrospectiva'),
+            ),
+            RaisedButton(
+              child: Text('Cadastrar'),
+              onPressed: () {
+                final String codigo = _codigo.text;
+                final String nome = _nome.text;
+                final String descricao = _descricao.text;
+                final String gerente = _gerente.text;
+                final String dataSP1 = _dataSP1.text;
+                final String dataSP2 = _dataSP2.text;
+                final String dataInicio = _dataInicio.text;
+                final String dataFim = _dataFim.text;
+                final String dataReview = _dataReview.text;
+                final String dataRetrospectiva = _dataRetrospectiva.text;
 
-                  final Usuario user = Usuario(
-                      username, nome, sobrenome, dataNascimento, email, senha);
-                  print(user);
-                },
-              )
-            ],
-          ),
+                final Projeto proj = Projeto(
+                    codigo,
+                    nome,
+                    descricao,
+                    gerente,
+                    dataSP1,
+                    dataSP2,
+                    dataInicio,
+                    dataFim,
+                    dataReview,
+                    dataRetrospectiva);
+                print(proj);
+              },
+            )
+          ],
         ),
       ),
     );
