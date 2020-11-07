@@ -34,7 +34,7 @@ class Formulario extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cadastrando produto'),
+          title: Text('Formulário de Usuário'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(5.0),
