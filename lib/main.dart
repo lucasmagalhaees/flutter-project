@@ -77,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<User> _usuarios;
   int _size;
   bool isPhone = false;
+  bool listandoUltimos = false;
 
   Future<List<User>> _getCategorias() async{
 
@@ -104,11 +105,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState(){
     super.initState();
-    _getCategorias().then((map){
+    mount();
+  } 
+
+  void mount(){
+        _getCategorias().then((map){
     _usuarios = map;
+    if(listandoUltimos){
+      _usuarios.removeWhere((element) => element.id < 6);
+
+    } else {
       _usuarios.removeWhere((element) => element.id > 5);
+
+    }
       _size = _usuarios.length;
-      print(_usuarios.length);
     });
   }
   
@@ -125,18 +135,40 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
         appBar: new AppBar(
         backgroundColor: Colors.green,
-        title: Text('Listagem de Usuários - Top 5'),
+        title: Text('Listagem de Usuários'),
       ),
 
         floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
+                    FloatingActionButton(
+            backgroundColor: Colors.blue,
+            onPressed: () {
+              _listaPrimeiros();
+            },
+            tooltip: 'Telefone',
+            child: Icon(Icons.arrow_upward),
+          ),
+          SizedBox(
+            width: 10.0,
+          ),
+                    FloatingActionButton(
+            backgroundColor: Colors.blue,
+            onPressed: () {
+              _listaUltimos();
+            },
+            tooltip: 'Telefone',
+            child: Icon(Icons.arrow_downward),
+          ),
+          SizedBox(
+            width: 10.0,
+          ),
           FloatingActionButton(
             backgroundColor: Colors.red,
             onPressed: () {
               _exibeTelefone();
             },
-            tooltip: 'Incrementar',
+            tooltip: 'Telefone',
             child: Icon(Icons.phone),
           ),
           SizedBox(
@@ -147,13 +179,25 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               _exibeEmail();
             },
-            tooltip: 'Decrementar',
+            tooltip: 'Email',
             child: Icon(Icons.email),
           ),
         ],
     ),
      
     );
+  }
+     void _listaPrimeiros() {
+    setState(() {
+      listandoUltimos = false;
+      mount();
+    });
+  }
+     void _listaUltimos() {
+    setState(() {
+      listandoUltimos = true;
+  mount();
+    });
   }
    void _exibeTelefone() {
     setState(() {
