@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListaKudos(),
       appBar: new AppBar(
         backgroundColor: Colors.orange,
-        title: Text('Lista de Pedidos'),
+        title: Text('Lista de Pedidos Dinâmica'),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
